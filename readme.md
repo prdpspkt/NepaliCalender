@@ -1,6 +1,6 @@
 #Nepali Calender
 
-*License URI:* (http://www.gnu.org/licenses/gpl-2.0.html)[http://www.gnu.org/licenses/gpl-2.0.html]
+*License URI:* [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
 
 *A.K.A:* Nepali date converter, Nepali calender converter, AD to BS Converter
 
