@@ -12,6 +12,6 @@
 
 > $nepaliCalender = new Nepali_Calendar;
 
-> $nepaliCalender->eng_to_nep( '2015', '12', '26' ); // For A.D to B.S Conversion
+> $nepaliCalender->engToNep( '2015', '12', '26' ); // For A.D to B.S Conversion
 
-> $nepaliCalender->nep_to_eng( '2059', '01', '24' ); // For B.S to A.D Conversion
+> $nepaliCalender->nepToEng( '2059', '01', '24' ); // For B.S to A.D Conversion
