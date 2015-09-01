@@ -111,7 +111,7 @@ class Nepali_Calendar
      * @param integer $year
      * @return boolean
      */
-    public function is_leap_year($year)
+    public function isLeapYear($year)
     {
         $a = $year;
         if ($a % 100 == 0) {
@@ -130,7 +130,7 @@ class Nepali_Calendar
         }
     }
 
-    private function get_nepali_month($m)
+    private function getNepaliMonth($m)
     {
         $n_month = false;
 
@@ -186,7 +186,7 @@ class Nepali_Calendar
         return $n_month;
     }
 
-    private function get_english_month($m)
+    private function getEnglishMonth($m)
     {
         $eMonth = false;
         switch ($m) {
@@ -230,7 +230,7 @@ class Nepali_Calendar
     }
 
 
-    private function get_day_of_week($day)
+    private function getDayOfWeek($day)
     {
         switch ($day) {
             case 1:
@@ -265,7 +265,7 @@ class Nepali_Calendar
     }
 
 
-    private function is_range_eng($yy, $mm, $dd)
+    private function isRangeEng($yy, $mm, $dd)
     {
         if ($yy < 1944 || $yy > 2033) {
             $this->debug_info = "Supported only between 1944-2022";
@@ -309,15 +309,15 @@ class Nepali_Calendar
     /**
      * currently can only calculate the date between AD 1944-2033...
      *
-     * @param unknown_type $yy
-     * @param unknown_type $mm
-     * @param unknown_type $dd
-     * @return unknown
+     * @param integer $yy
+     * @param integer $mm
+     * @param integer $dd
+     * @return string
      */
 
-    public function eng_to_nep($yy, $mm, $dd)
+    public function engToNep($yy, $mm, $dd)
     {
-        if ($this->is_range_eng($yy, $mm, $dd) == false) {
+        if ($this->isRangeEng($yy, $mm, $dd) == false) {
             return false;
         } else {
 
@@ -341,7 +341,7 @@ class Nepali_Calendar
 
 // count total no. of days in-terms of year
             for ($i = 0; $i < ($yy - $def_eyy); $i++) {    //total days for month calculation...(english)
-                if ($this->is_leap_year($def_eyy + $i) == 1)
+                if ($this->isLeapYear($def_eyy + $i) == 1)
                     for ($j = 0; $j < 12; $j++)
                         $total_eDays += $lmonth[$j];
                 else
@@ -351,7 +351,7 @@ class Nepali_Calendar
 
 // count total no. of days in-terms of month
             for ($i = 0; $i < ($mm - 1); $i++) {
-                if ($this->is_leap_year($yy) == 1)
+                if ($this->isLeapYear($yy) == 1)
                     $total_eDays += $lmonth[$i];
                 else
                     $total_eDays += $month[$i];
@@ -395,8 +395,8 @@ class Nepali_Calendar
             $this->nep_date["year"] = $y;
             $this->nep_date["month"] = $m;
             $this->nep_date["date"] = $total_nDays;
-            $this->nep_date["day"] = $this->get_day_of_week($day);
-            $this->nep_date["nmonth"] = $this->get_nepali_month($m);
+            $this->nep_date["day"] = $this->getDayOfWeek($day);
+            $this->nep_date["nmonth"] = $this->getNepaliMonth($m);
             $this->nep_date["num_day"] = $numDay;
             return $this->nep_date;
         }
@@ -406,12 +406,12 @@ class Nepali_Calendar
     /**
      * currently can only calculate the date between BS 2000-2089
      *
-     * @param unknown_type $yy
-     * @param unknown_type $mm
-     * @param unknown_type $dd
-     * @return unknown
+     * @param integer $yy
+     * @param integer $mm
+     * @param integer $dd
+     * @return String
      */
-    public function nep_to_eng($yy, $mm, $dd)
+    public function nepToEng($yy, $mm, $dd)
     {
 
         $def_eyy = 1943;
@@ -459,7 +459,7 @@ class Nepali_Calendar
             $m = $def_emm;
             $y = $def_eyy;
             while ($total_nDays != 0) {
-                if ($this->is_leap_year($y)) {
+                if ($this->isLeapYear($y)) {
                     $a = $lmonth[$m];
                 } else {
                     $a = $month[$m];
@@ -483,8 +483,8 @@ class Nepali_Calendar
             $this->eng_date["year"] = $y;
             $this->eng_date["month"] = $m;
             $this->eng_date["date"] = $total_eDays;
-            $this->eng_date["day"] = $this->get_day_of_week($day);
-            $this->eng_date["emonth"] = $this->get_english_month($m);
+            $this->eng_date["day"] = $this->getDayOfWeek($day);
+            $this->eng_date["emonth"] = $this->getEnglishMonth($m);
             $this->eng_date["num_day"] = $numDay;
 
             return $this->eng_date;
