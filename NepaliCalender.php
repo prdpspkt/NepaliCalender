@@ -2,9 +2,10 @@
 /*
  * Nepali Calender
  * Description: Changes dates from AD to BS and BS to AD
- * Copyright 2015 Sastodeal Pvt. Ltd.
+ * Authored By: Sastodeal Pvt. Ltd.
+ * Contributed By: Sodhan Manandhar
  */
-class Nepali_Calendar
+class NepaliCalender
 {
     private $bs = array(
         0 => array(2000, 30, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31),
